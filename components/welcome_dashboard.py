@@ -97,6 +97,11 @@ def ActivityTimeline(recent_activity: list):
         elif "Flashcard" in feature:
             bullet_color = "var(--accent-2)"
 
+        # Clean and truncate topic to 1-2 lines maximum
+        clean_topic = " ".join(str(topic).split())
+        if len(clean_topic) > 90:
+            clean_topic = clean_topic[:87].strip() + "..."
+
         timeline_items_html += f"""
         <div style="display: flex; gap: 14px; position: relative; margin-bottom: 16px;">
             {'' if idx == len(recent_activity[:5]) - 1 else f'<div style="position: absolute; left: 6px; top: 18px; bottom: -18px; width: 2px; background-color: var(--line); z-index: 0;"></div>'}
@@ -106,7 +111,7 @@ def ActivityTimeline(recent_activity: list):
                     <strong style="color: var(--text); font-weight: 600;">{feature} &bull; <span style='font-weight: 400; color: var(--muted);'>{status}</span></strong>
                     <span style="color: var(--muted); font-size: 11px;">{formatted_date}</span>
                 </div>
-                <span style="font-size: 12.5px; color: var(--muted); display: block; margin-top: 2px;">{topic}</span>
+                <span style="font-size: 12.5px; color: var(--muted); display: block; margin-top: 2px;">{clean_topic}</span>
             </div>
         </div>
         """
@@ -271,7 +276,10 @@ def render_welcome_dashboard(profile: dict, analytics: dict):
             InsightCard("Recall Practice Recommended", "Try generating more flashcard decks or topic quizzes to boost retention.", "Focus on revision", "warning")
 
         if most_studied and most_studied != "None":
-            InsightCard("Topic Concentration", f"You have spent the most sessions reviewing '{most_studied}' this week.", "", "info")
+            clean_most_studied = " ".join(str(most_studied).split())
+            if len(clean_most_studied) > 90:
+                clean_most_studied = clean_most_studied[:87].strip() + "..."
+            InsightCard("Topic Concentration", f"You have spent the most sessions reviewing '{clean_most_studied}' this week.", "", "info")
 
         # Recommended Topics Widget
         st.markdown("<h3 style='font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.04em;'>Recommended Revisions</h3>", unsafe_allow_html=True)
