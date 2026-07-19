@@ -47,6 +47,7 @@ def get_config(include_database=True):
         "port": DATABASE_CONFIG.port,
         "user": _get_required_env("MYSQL_USER"),
         "password": _get_required_env("MYSQL_PASSWORD"),
+        "ssl_verify_cert": False,
     }
 
     if include_database:
