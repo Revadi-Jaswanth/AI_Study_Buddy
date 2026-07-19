@@ -25,7 +25,7 @@ def get_filter_options():
     }
 
 
-@st.cache_data(ttl=10)
+@st.cache_data(ttl=10, show_spinner=False)
 def get_dashboard_data(user_id, start_date=None, end_date=None, feature="All Features", topic=""):
     filters = {
         "user_id": user_id,

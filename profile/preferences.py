@@ -3,7 +3,7 @@ from database.connection import DatabaseError
 from profile.profile_database import get_active_profile
 
 
-@st.cache_data(ttl=10)
+@st.cache_data(ttl=10, show_spinner=False)
 def get_profile_preferences(user_id):
     try:
         return get_active_profile(user_id)
