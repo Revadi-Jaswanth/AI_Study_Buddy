@@ -1,0 +1,433 @@
+/* UI components for AI Study Buddy */
+
+/* Hero Section */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 2.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(59, 130, 246, 0.05)), var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-badge {
+    width: fit-content;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.hero-copy h1 {
+    margin: 1rem 0 0.5rem;
+    color: var(--text);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.hero-copy p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.hero-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface-soft);
+    min-height: 180px;
+}
+
+.hero-panel-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.hero-panel-top span {
+    color: var(--muted);
+}
+
+.hero-panel-top strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.hero-orbit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.hero-orbit span,
+.feature-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    font-size: 1.25rem;
+}
+
+/* Feature Cards Grid */
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+    margin: 1rem 0 0.5rem 0;
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Tool Header Block */
+.tool-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.tool-header > span {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    font-size: 1.35rem;
+}
+
+.tool-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+
+.tool-header p {
+    margin: 0.25rem 0 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* Metric Cards */
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.metric-card span {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.metric-card strong {
+    color: var(--text);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.metric-card small {
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+/* Streamlit Forms & Inputs styling override */
+.stTextInput input,
+.stTextArea textarea,
+.stNumberInput input,
+.stFileUploader {
+    background-color: var(--surface-soft) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.9rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.stSelectbox [data-baseweb="select"] {
+    background-color: var(--surface-soft) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+.stTextInput input:focus,
+.stTextArea textarea:focus,
+.stNumberInput input:focus,
+.stSelectbox [data-baseweb="select"]:focus-within {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15) !important;
+}
+
+/* Label colors overrides */
+label[data-testid="stWidgetLabel"] p {
+    color: var(--text) !important;
+}
+
+/* Streamlit Buttons styling override */
+.stButton > button {
+    width: 100% !important;
+    background: var(--accent-gradient) !important;
+    color: #ffffff !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    min-height: 2.75rem !important;
+    border-radius: 8px !important;
+    border: 0 !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15) !important;
+    cursor: pointer !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.25) !important;
+    filter: brightness(1.05) !important;
+}
+
+.stButton > button:active {
+    transform: translateY(0) !important;
+}
+
+/* Secondary Cancel or Normal buttons */
+[data-testid="stSidebar"] .stButton > button {
+    box-shadow: none !important;
+    background: var(--surface-soft) !important;
+    border: 1px solid var(--line) !important;
+    color: var(--text) !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    border-color: var(--accent) !important;
+    background: var(--surface) !important;
+}
+
+/* Alert boxes standard styling override */
+[data-testid="stAlert"] {
+    background-color: var(--surface-soft) !important;
+    border: 1px solid var(--line) !important;
+    color: var(--text) !important;
+    border-radius: 10px !important;
+}
+
+[data-testid="stAlert"] [data-testid="stMarkdownContainer"] p {
+    color: var(--text) !important;
+}
+
+/* Tabs styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 1.5rem !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--line) !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    color: var(--muted) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.25rem !important;
+    border-bottom-width: 2px !important;
+    transition: all 0.2s ease !important;
+}
+
+.stTabs [data-baseweb="tab-highlight"] {
+    background-color: var(--accent) !important;
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--text) !important;
+    font-weight: 600 !important;
+}
+
+/* Dataframe & Tables styling */
+.stDataFrame,
+[data-testid="stTable"] {
+    border: 1px solid var(--line) !important;
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
+}
+
+/* Progress bar styling */
+.stProgress > div > div > div > div {
+    background: var(--accent-gradient) !important;
+}
+
+.stProgress > div > div {
+    background-color: var(--surface-soft) !important;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-soft);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--muted);
+}
+
+/* Fix popover overlay select menu items text color and background contrast across Light and Dark themes */
+div[data-baseweb="popover"],
+div[data-baseweb="menu"],
+ul[role="listbox"] {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 8px !important;
+}
+
+li[role="option"] {
+    color: var(--text) !important;
+    background-color: transparent !important;
+    font-size: 0.9rem !important;
+    padding: 8px 12px !important;
+    transition: background-color 0.15s ease !important;
+}
+
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"] {
+    background-color: var(--surface-soft) !important;
+    color: var(--accent) !important;
+}
+
+/* Auth Page specific glassmorphism cards & transitions */
+.auth-wrapper {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 16px !important;
+    box-shadow: var(--shadow) !important;
+    padding: 2.5rem !important;
+    animation: authFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes authFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Quick Actions button container and overlay face card styles */
+.quick-actions-wrapper {
+    position: relative;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.quick-actions-wrapper div[data-testid="stButton"] button {
+    height: 75px !important;
+    background: transparent !important;
+    border: none !important;
+    color: transparent !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.quick-action-card-face {
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: -75px;
+    position: relative;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.quick-actions-wrapper:hover .quick-action-card-face {
+    border-color: var(--accent) !important;
+    background: var(--surface) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Secure character masking to prevent browser password managers suggestions */
+.no-autocomplete input {
+    -webkit-text-security: disc !important;
+    text-security: disc !important;
+}
+
+
+

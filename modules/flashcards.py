@@ -1,21 +1,8 @@
-from modules.gemini_config import model
+from modules.gemini_config import generate_content
+from modules.prompts import legacy_flashcards_markdown_prompt
 
 def generate_flashcards(topic):
 
-    prompt = f"""
-    Create 10 flashcards.
-
-    Topic:
-    {topic}
-
-    Format:
-
-    Question:
-    Answer:
-    """
-
-    response = model.generate_content(
-        prompt
+    return generate_content(
+        legacy_flashcards_markdown_prompt(topic)
     )
-
-    return response.text

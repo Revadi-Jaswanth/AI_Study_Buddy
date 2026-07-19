@@ -1,21 +1,8 @@
-from modules.gemini_config import model
+from modules.gemini_config import generate_content
+from modules.prompts import legacy_quiz_markdown_prompt
 
 def generate_quiz(topic,difficulty):
 
-    prompt = f"""
-    Create 10 MCQs.
-
-    Topic:
-    {topic}
-
-    Difficulty:
-    {difficulty}
-
-    Include answers.
-    """
-
-    response = model.generate_content(
-        prompt
+    return generate_content(
+        legacy_quiz_markdown_prompt(topic, difficulty)
     )
-
-    return response.text

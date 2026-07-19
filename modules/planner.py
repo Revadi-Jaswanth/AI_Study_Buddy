@@ -1,21 +1,8 @@
-from modules.gemini_config import model
+from modules.gemini_config import generate_content
+from modules.prompts import study_planner_prompt
 
 def generate_plan(subject,days):
 
-    prompt = f"""
-    Create study plan.
-
-    Subject:
-    {subject}
-
-    Days:
-    {days}
-
-    Give day wise schedule.
-    """
-
-    response = model.generate_content(
-        prompt
+    return generate_content(
+        study_planner_prompt(subject, days)
     )
-
-    return response.text

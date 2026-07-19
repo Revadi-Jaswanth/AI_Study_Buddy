@@ -4,10 +4,17 @@ def extract_pdf_text(pdf_file):
 
     reader = PdfReader(pdf_file)
 
-    text = ""
+    text_parts = []
 
     for page in reader.pages:
 
-        text += page.extract_text()
+        page_text = page.extract_text()
 
-    return text
+        if page_text:
+            text_parts.append(
+                page_text
+            )
+
+    return "\n".join(
+        text_parts
+    )

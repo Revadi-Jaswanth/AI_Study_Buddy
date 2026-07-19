@@ -1,0 +1,10 @@
+/*
+  style.css is now modularized!
+  The styles have been split into:
+  - theme.css: Color tokens, typography, and theme-root definitions.
+  - layout.css: Structural layouts, metrics, feature grids, and margins.
+  - components.css: Overrides for buttons, inputs, alerts, tabs, and tables.
+  - animations.css: Page transitions, hover scales, and visual keyframes.
+
+  They are loaded dynamically by app.py.
+*/

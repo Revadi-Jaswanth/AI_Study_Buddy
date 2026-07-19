@@ -1,21 +1,8 @@
-from modules.gemini_config import model
+from modules.gemini_config import generate_content
+from modules.prompts import notes_summarizer_prompt
 
 def summarize_notes(notes):
 
-    prompt = f"""
-    Summarize these notes.
-
-    Create:
-    - Key Points
-    - Important Concepts
-    - Exam Notes
-
-    Notes:
-    {notes}
-    """
-
-    response = model.generate_content(
-        prompt
+    return generate_content(
+        notes_summarizer_prompt(notes)
     )
-
-    return response.text
