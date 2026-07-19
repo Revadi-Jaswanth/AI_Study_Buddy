@@ -98,6 +98,55 @@ def _render_filters():
     }
 
 
+def clean_html(html_str: str) -> str:
+    """Removes indentation and newlines to prevent Streamlit from interpreting HTML as preformatted markdown code blocks."""
+    return " ".join([line.strip() for line in html_str.split("\n") if line.strip()])
+
+
+def render_custom_metric(label, value):
+    val_str = str(value)
+    if len(val_str) > 28:
+        val_str = val_str[:25] + "..."
+    
+    label_clean = str(label).strip()
+    
+    html_payload = clean_html(f"""
+    <div style="
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        min-height: 74px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    ">
+        <span style="
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            display: block;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        ">{label_clean}</span>
+        <strong style="
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text);
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        " title="{value}">{val_str}</strong>
+    </div>
+    """)
+    st.markdown(html_payload, unsafe_allow_html=True)
+
+
 def _render_summary_cards(summary):
     st.subheader("Dashboard Cards")
     rows = [
@@ -116,7 +165,7 @@ def _render_summary_cards(summary):
 
         for column, (label, value) in zip(columns, rows[start:start + 4]):
             with column:
-                st.metric(label, value)
+                render_custom_metric(label, value)
 
 
 def _render_performance_cards(performance):
@@ -144,7 +193,7 @@ def _render_performance_cards(performance):
 
         for column, (label, value) in zip(columns, row):
             with column:
-                st.metric(label, value)
+                render_custom_metric(label, value)
 
 
 def _render_charts(data):
