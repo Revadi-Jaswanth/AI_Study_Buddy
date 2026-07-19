@@ -1869,11 +1869,12 @@ st.set_page_config(
     layout="wide",
 )
 
+# Always load the light theme styling for the application layout
+load_css("light")
+
 logger.info("AI Study Buddy application started.")
 
 if "user_id" not in st.session_state:
-    # Force light theme for signin and signup pages
-    load_css("light")
     render_auth_page()
     st.stop()
 

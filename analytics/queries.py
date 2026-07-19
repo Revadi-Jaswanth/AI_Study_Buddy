@@ -1,3 +1,4 @@
+import streamlit as st
 from database.queries import fetch_all, fetch_one
 
 
@@ -19,10 +20,12 @@ def get_filter_options():
             "Quiz Attempts",
             "Flashcard Sessions",
             "PDF Export",
+            "All Workspace Pages",
         ]
     }
 
 
+@st.cache_data(ttl=10)
 def get_dashboard_data(user_id, start_date=None, end_date=None, feature="All Features", topic=""):
     filters = {
         "user_id": user_id,
